@@ -16,18 +16,23 @@ module.exports = () => {
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      //creates output for bundle files
+
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'JATE'
+        //generates html and injects our bundles into the file
       }),
       
+      //injects custom service worker into files
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
 
+      //creates manifest file
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -58,7 +63,7 @@ module.exports = () => {
           {
             test: /\.m?js$/,
             exclude: /node_modules/,
-            // We use babel-loader in order to use ES6.
+            // utilize babel loader for ES6
             use: {
               loader: 'babel-loader',
               options: {
