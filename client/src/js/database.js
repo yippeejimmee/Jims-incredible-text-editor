@@ -15,7 +15,7 @@ const initdb = async () =>
     },
   });
 
-// TODO: Add logic to a method that accepts some content and adds it to the database
+
 export const putDb = async (content) => {
   //exports function putDB which will add to database
 
@@ -28,13 +28,13 @@ export const putDb = async (content) => {
 
   const store = tx.objectStore('jate');
 
-  const request = store.put({content: content});
+  const request = store.put({jate: content});
   //update the content
   const result = await request;
   console.log('Data saved to database', result);
 };
 
-// TODO: Add logic for a method that gets all the content from the database
+
 export const getDb = async () => {
   //export function to get data from database
 
